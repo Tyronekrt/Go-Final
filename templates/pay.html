@@ -1,0 +1,113 @@
+{#{% extends 'starter-page.html' %}#}
+{#{% load static %}#}
+{#{% block body %}#}
+{##}
+{#    <h2>Make a Payment</h2>#}
+{##}
+{#<form method="post" action="{% url 'stk' %}">#}
+{#  {% csrf_token %}#}
+{#    <label for="phone">Phone Number :</label>#}
+{#    <input type="number" id="phone" name="phone" value="254" placeholder="Phone Number">#}
+{#    <br><br>#}
+{##}
+{#    <label for="amount">Amount :</label>#}
+{#    <input type="text" id="amount" name="amount" placeholder="Amount">#}
+{#    <br><br>#}
+{#  <button type="submit">Submit</button>#}
+{#</form>#}
+{##}
+{#{% endblock %}#}
+{% extends 'starter-page.html' %}
+{% load static %}
+{% block body %}
+
+<style>
+    .payment-container {
+        background: #ffffff;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 450px;
+        margin: 20px auto;
+    }
+
+    h2 {
+        text-align: center;
+        color: #2c3e50;
+        font-size: 26px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #34495e;
+        margin-bottom: 8px;
+    }
+
+    input[type="number"],
+    input[type="text"] {
+        padding: 12px 15px;
+        font-size: 14px;
+        border: 1px solid #dcdfe6;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="number"]:focus,
+    input[type="text"]:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
+        outline: none;
+    }
+
+    input::placeholder {
+        color: #aaa;
+    }
+
+    button {
+        background-color: #3498db;
+        color: #ffffff;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+    }
+
+    button:active {
+        background-color: #1d6391;
+        transform: translateY(0);
+    }
+</style>
+
+<div class="payment-container">
+    <h2>Make a Payment</h2>
+    <form method="post" action="{% url 'stk' %}">
+        {% csrf_token %}
+        <label for="phone">Phone Number</label>
+        <input type="number" id="phone" name="phone" value="254" placeholder="Enter your phone number" required>
+
+        <label for="amount">Amount</label>
+        <input type="text" id="amount" name="amount" placeholder="Enter the amount" required>
+
+        <button type="submit">Submit Payment</button>
+    </form>
+</div>
+
+{% endblock %}
